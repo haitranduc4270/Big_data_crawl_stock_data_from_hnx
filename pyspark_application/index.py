@@ -14,7 +14,7 @@
 # df = spark.createDataFrame(data=data, schema = columns)
 # df.show()
 
-from crawler import start_crawler
+from pyspark_application import start_spark_application
 
-print('Crawler on')
-start_crawler()
+print('Application on')
+start_spark_application()

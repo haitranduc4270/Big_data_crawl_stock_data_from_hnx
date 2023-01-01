@@ -14,7 +14,9 @@ def get_register():
     return {
         'data_dir': 'hdfs://namenode:9000/project20221/raw/ssiDataApi.csv',
         'config_dir': 'hdfs://namenode:9000/project20221/config/stock_data_ssi',
-        'topic': 'consumer_topic'
+        'topic': 'consumer_topic',
+        'time_stamp': time.ctime(time.time())
+
     }
 
 def json_serializer(data):

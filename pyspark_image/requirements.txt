@@ -1,4 +1,5 @@
 hdfs
-elasticsearch
 kafka-python
 requests
+schedule
+pyspark==3.3.1

@@ -1,3 +1,0 @@
-hdfs
-elasticsearch
-kafka-python
