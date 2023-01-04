@@ -1,7 +1,11 @@
 from pyspark.context import SparkContext
 from pyspark.sql.session import SparkSession
-sc = SparkContext('local')
-spark = SparkSession(sc)
+
+
+spark_app = (SparkSession
+.builder.master("spark://172.20.0.5:7077")
+.appName('pyspark_application_test2')
+.getOrCreate())
 
 data = [('James','','Smith','1991-04-01','M',3000),
   ('Michael','Rose','','2000-05-19','M',4000),
@@ -11,5 +15,6 @@ data = [('James','','Smith','1991-04-01','M',3000),
 ]
 
 columns = ["firstname","middlename","lastname","dob","gender","salary"]
-df = spark.createDataFrame(data=data, schema = columns)
+
+df = spark_app.createDataFrame(data=data, schema = columns)
 df.show()

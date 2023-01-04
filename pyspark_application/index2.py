@@ -1,7 +1,11 @@
 from pyspark.context import SparkContext
 from pyspark.sql.session import SparkSession
-sc = SparkContext('local')
-spark = SparkSession(sc)
+
+spark = (SparkSession
+    .builder
+    .master("spark://spark-master:7077")
+    .appName('pyspark_application_test')
+    .getOrCreate())
 
 data = [('James','','Smith','1991-04-01','M',3000),
   ('Michael','Rose','','2000-05-19','M',4000),

@@ -2,4 +2,4 @@ hdfs
 kafka-python
 requests
 schedule
-pyspark==3.3.1
+pyspark==3.3.0
