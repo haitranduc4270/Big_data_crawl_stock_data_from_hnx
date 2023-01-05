@@ -16,8 +16,8 @@
        "from":"8: cái này là kiểu 8 h sáng đến 18 h tối kiểu thế",
        "to":"18: cái này là kiểu 8 h sáng đến 18 h tối kiểu thế"
     },
-    "hadoop_dir": "project20221/raw/ssi_stock_data.json - vị trí data đc lưu vào sau khi lấy về",
-    "config_dir": "project20221/config/ssi_stock_data.json - vị trí lấy ra file config để xử lý bằng spark",
+    "hadoop_dir": "raw/stock_price_realtime/",
+    "config_dir": "config/ssi_stock_data.json/",
     "Schema": [
         {
             "fieldName":"typename - tên trường mới ",

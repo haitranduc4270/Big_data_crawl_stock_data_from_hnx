@@ -2,9 +2,13 @@ import random
 import time
 from datetime import datetime
 
-def start_spark_application ():
-    while True:
-        print(datetime.now())
-        time.sleep(random.uniform(0.5,1.5))
-        print("heloooo consumer")
+from dependencies import spark
+from dependencies import kafka_consumer
+from services import service
 
+spark_context = spark.start_spark()
+kafka_consumer_instance = kafka_consumer.start_kafka_consumer('kafka:9092', ['consumer_topic'])
+
+while 1:
+  for msg in kafka_consumer_instance:
+    service.start(msg, spark_context)
