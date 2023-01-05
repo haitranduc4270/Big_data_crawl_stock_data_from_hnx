@@ -5,6 +5,7 @@ def start_spark ():
   spark_context = (SparkSession
     .builder
     .master("spark://spark-master:7077")
-    .appName('pyspark_application'))
+    .appName('pyspark_application')
+    .getOrCreate())
 
   return spark_context

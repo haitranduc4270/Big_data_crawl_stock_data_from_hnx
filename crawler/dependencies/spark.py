@@ -2,9 +2,10 @@ from pyspark.context import SparkContext
 from pyspark.sql.session import SparkSession
 
 def start_spark ():
-  spark_context = (SparkSession
+  spark = (SparkSession
     .builder
-    .master("spark://spark-master:7077")
-    .appName('crawler'))
+    .master('spark://spark-master-crawler:7077')
+    .appName('crawler')
+    .getOrCreate())
 
-  return spark_context
+  return spark

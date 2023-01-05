@@ -60,15 +60,28 @@ services:
       - "SPARK_MASTER=spark://spark-master:7077"
       - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
 
-  spark-worker2:
+  spark-master-crawler:
+    image: bde2020/spark-master:3.3.0-hadoop3.3
+    container_name: spark-master-crawler
+    depends_on:
+      - namenode
+      - datanode
+    ports:
+      - "9080:8080"
+      - "8077:7077"
+    environment:
+      - INIT_DAEMON_STEP=setup_spark
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+
+  spark-worker-crawler:
     image: bde2020/spark-worker:3.3.0-hadoop3.3
-    container_name: spark-worker2
+    container_name: spark-worker-crawler
     depends_on:
       - spark-master
     ports:
-      - "8082:8082"
+      - "9082:9082"
     environment:
-      - "SPARK_MASTER=spark://spark-master:7077"
+      - "SPARK_MASTER=spark://spark-master-crawler:7077"
       - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
 
   # elasticsearch:
