@@ -1,14 +1,17 @@
 {
-    "url":"https://wgateway-iboard.ssi.com.vn/graphql",
-    "method":"POST",
-    "body":{
-       "operationName":"stockRealtimesByGroup",
-       "query":"query stockRealtimesByGroup($group: String) {\n  stockRealtimesByGroup(group: $group) {\n    stockNo\n    ceiling\n    floor\n    refPrice\n    stockSymbol\n    stockType\n    exchange\n    matchedPrice\n    matchedVolume\n    priceChange\n    priceChangePercent\n    highest\n    avgPrice\n    lowest\n    nmTotalTradedQty\n    best1Bid\n    best1BidVol\n    best2Bid\n    best2BidVol\n    best3Bid\n    best3BidVol\n    best4Bid\n    best4BidVol\n    best5Bid\n    best5BidVol\n    best6Bid\n    best6BidVol\n    best7Bid\n    best7BidVol\n    best8Bid\n    best8BidVol\n    best9Bid\n    best9BidVol\n    best10Bid\n    best10BidVol\n    best1Offer\n    best1OfferVol\n    best2Offer\n    best2OfferVol\n    best3Offer\n    best3OfferVol\n    best4Offer\n    best4OfferVol\n    best5Offer\n    best5OfferVol\n    best6Offer\n    best6OfferVol\n    best7Offer\n    best7OfferVol\n    best8Offer\n    best8OfferVol\n    best9Offer\n    best9OfferVol\n    best10Offer\n    best10OfferVol\n    buyForeignQtty\n    buyForeignValue\n    sellForeignQtty\n    sellForeignValue\n    caStatus\n    tradingStatus\n    remainForeignQtty\n    currentBidQty\n    currentOfferQty\n    session\n    tradingUnit\n    __typename\n  }\n}\n",
-       "variables":{
-          "group":"VN30"
-       }
-    },
-    "frequency":{
+   "data": "ssi_stock_data_api",
+   "source": {
+      "url":"https://wgateway-iboard.ssi.com.vn/graphql",
+      "method":"POST",
+      "body":{
+         "operationName":"stockRealtimesByGroup",
+         "query":"query stockRealtimesByGroup($group: String) {\n  stockRealtimesByGroup(group: $group) {\n    stockNo\n    ceiling\n    floor\n    refPrice\n    stockSymbol\n    stockType\n    exchange\n    matchedPrice\n    matchedVolume\n    priceChange\n    priceChangePercent\n    highest\n    avgPrice\n    lowest\n    nmTotalTradedQty\n    best1Bid\n    best1BidVol\n    best2Bid\n    best2BidVol\n    best3Bid\n    best3BidVol\n    best4Bid\n    best4BidVol\n    best5Bid\n    best5BidVol\n    best6Bid\n    best6BidVol\n    best7Bid\n    best7BidVol\n    best8Bid\n    best8BidVol\n    best9Bid\n    best9BidVol\n    best10Bid\n    best10BidVol\n    best1Offer\n    best1OfferVol\n    best2Offer\n    best2OfferVol\n    best3Offer\n    best3OfferVol\n    best4Offer\n    best4OfferVol\n    best5Offer\n    best5OfferVol\n    best6Offer\n    best6OfferVol\n    best7Offer\n    best7OfferVol\n    best8Offer\n    best8OfferVol\n    best9Offer\n    best9OfferVol\n    best10Offer\n    best10OfferVol\n    buyForeignQtty\n    buyForeignValue\n    sellForeignQtty\n    sellForeignValue\n    caStatus\n    tradingStatus\n    remainForeignQtty\n    currentBidQty\n    currentOfferQty\n    session\n    tradingUnit\n    __typename\n  }\n}\n",
+         "variables":{
+            "group":"VN30"
+         }
+      }
+   },
+   "frequency":{
        "period":{
           "value":"giá trị thời gian lặp lại ví dụ 1, 2 3",
           "unit":"đơn vị của chu kỳ ví dụ là hour thì sẽ lặp theo giờ, phút, ..."
@@ -17,168 +20,6 @@
        "to":"18: cái này là kiểu 8 h sáng đến 18 h tối kiểu thế"
     },
     "hadoop_dir": "raw/stock_price_realtime/",
-    "config_dir": "config/ssi_stock_data.json/",
-    "Schema": [
-        {
-            "fieldName":"typename - tên trường mới ",
-            "type":"string kiểu dữ liệu trong spark để đọc nó sẽ là kiểu stringType, ...",
-            "nullable": "1 0 kiểu boolean í",
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"avgPrice",
-            "type":"double",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best1Bid",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best1BidVol",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best1Offer",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best1OfferVol",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best2Bid",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best2BidVol",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best2Offer",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best2OfferVol",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best3Bid",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best3BidVol",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best3Offer",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"best3OfferVol",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"buyForeignQtty",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"caStatus",
-            "type":"string",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"ceiling",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"exchange",
-            "type":"string",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"floor",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"highest",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"lowest",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"matchedPrice",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        },
-        {
-            "fieldName":"matchedVolume",
-            "type":"long",
-            "nullable":1,
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        }
-    ]
+    "config_dir": "config/ssi_stock_data.json",
+    "Schema": []
  }

@@ -1,0 +1,17 @@
+{
+   "data": "news_vndirect_api",
+   "source": {
+      "url":"https://finfo-api.vndirect.com.vn/v4/news?q=newsGroup:company_news~locale:VN&sort=newsDate:desc~newsTime:desc&size=20",
+      "method":"GET"
+   },
+   "frequency":{
+      "period":{
+         "value":"giá trị thời gian lặp lại ví dụ 1, 2 3",
+         "unit":"đơn vị của chu kỳ ví dụ là hour thì sẽ lặp theo giờ, phút, ..."
+      },
+      "from":"8: cái này là kiểu 8 h sáng đến 18 h tối kiểu thế",
+      "to":"18: cái này là kiểu 8 h sáng đến 18 h tối kiểu thế"
+   },
+   "hadoop_dir": "raw/news_vndirect/",
+   "config_dir": "config/news_vndirect.json"
+ }

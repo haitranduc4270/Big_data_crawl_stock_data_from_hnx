@@ -1,4 +1,8 @@
-from crawler import start_crawler
+import time
+from datetime import datetime
 
-print('Crawler on')
-start_crawler()
+print('Craler stared')
+
+while True:
+    print(datetime.now())
+    time.sleep(60)

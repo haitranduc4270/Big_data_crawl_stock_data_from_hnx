@@ -7,7 +7,7 @@ from dependencies import kafka_consumer
 from services import service
 
 spark_sess = spark.start_spark()
-kafka_consumer_instance = kafka_consumer.start_kafka_consumer('kafka:9092', ['consumer_topic'])
+kafka_consumer_instance = kafka_consumer.start_kafka_consumer('kafka:9092', ['crawl_data'])
 
 while 1:
   for msg in kafka_consumer_instance:
