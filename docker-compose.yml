@@ -84,26 +84,32 @@ services:
       - "SPARK_MASTER=spark://spark-master-crawler:7077"
       - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
 
-  # elasticsearch:
-  #   image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
-  #   container_name: elasticsearch
-  #   volumes:
-  #     - esdata:/usr/share/elasticsearch/data
-  #   ports:
-  #     - 9200:9200
-  #     - 9300:9300
-  #   environment:
-  #     - xpack.security.enabled=false
-  #     - "discovery.type=single-node"
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
+    container_name: elasticsearch
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
 
-  # kibana:
-  #   image: docker.elastic.co/kibana/kibana:7.15.1
-  #   container_name: kibana
-  #   ports:
-  #     - 5601:5601
-  #   environment:
-  #     ELASTICSEARCH_URL: http://elasticsearch:9200
-  #     ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.1
+    container_name: kibana
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+
 
   zookeeper:
     image: wurstmeister/zookeeper
@@ -142,8 +148,8 @@ services:
       - spark-worker
       # - elasticsearch
       # - kibana
-      # - zookeeper
-      # - kafka
+      - zookeeper
+      - kafka
     volumes:
       - ../big_data_20221/pyspark_application/:/app
 
@@ -158,11 +164,12 @@ services:
       - spark-worker
       # - elasticsearch
       # - kibana
-      # - zookeeper
-      # - kafka
+      - zookeeper
+      - kafka
     volumes:
       - ../big_data_20221/crawler/:/app
 
 volumes:
   hadoop_namenode:
   hadoop_datanode:
+  esdata:
