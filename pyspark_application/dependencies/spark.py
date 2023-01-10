@@ -6,6 +6,8 @@ def start_spark ():
     .builder
     .master("spark://spark-master:7077")
     .appName('pyspark_application')
+    .config("spark.executor.cores", 4)
+    .config("spark.cores.max", 4)
     .getOrCreate())
 
   return spark_context

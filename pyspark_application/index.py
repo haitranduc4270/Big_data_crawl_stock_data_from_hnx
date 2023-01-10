@@ -1,4 +1,8 @@
-from pyspark_application import start_spark_application
+# import time
+# from datetime import datetime
 
-print('Application on')
-start_spark_application()
+# print('Craler stared')
+
+# while True:
+#     print(datetime.now())
+#     time.sleep(60)
