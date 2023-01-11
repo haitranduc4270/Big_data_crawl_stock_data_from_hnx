@@ -3,13 +3,14 @@ import json
 from datetime import datetime, timedelta
 from constant.constant import time_zone, time_format
 
-def get_analys_news_vndirect(url) :
+
+def get_analys_news_vndirect(url):
     try:
         result = requests.get(url)
         if result.status_code == 200:
 
             return {
-                'timestamp': datetime.now() + timedelta(hours = time_zone),
+                'timestamp': datetime.now() + timedelta(hours=time_zone),
                 'data': json.loads(result.text)['data']
             }
 
@@ -18,40 +19,42 @@ def get_analys_news_vndirect(url) :
     except Exception as e:
         print(e)
 
-def get_news_vndirect(url) :
+
+def get_news_vndirect(url):
     try:
         result = requests.get(url)
         if result.status_code == 200:
 
             return {
-                'timestamp': datetime.now() + timedelta(hours = time_zone),
+                'timestamp': datetime.now() + timedelta(hours=time_zone),
                 'data': json.loads(result.text)['data']
             }
 
-        print('Request get_news_vndirect fail' + (datetime.now() + timedelta(hours = time_zone)).strftime(time_format))
+        print('Request get_news_vndirect fail' + (datetime.now() +
+              timedelta(hours=time_zone)).strftime(time_format))
 
     except Exception as e:
         print(e)
 
 
-def get_stock_real_times_by_group (url, body):
+def get_stock_real_times_by_group(url, body):
     try:
-        result = requests.post(url, json = {
-            'operationName' : body['operationName'],
+        result = requests.post(url, json={
+            'operationName': body['operationName'],
             'query': body['query'],
             'variables': {
-                'group': body['variables']['group']
+                'exchange': body['variables']['exchange']
             }
         })
 
         if result.status_code == 200:
-
             return {
-                'timestamp': datetime.now() + timedelta(hours = time_zone),
-                'data': json.loads(result.text)['data']['stockRealtimesByGroup']
+                'timestamp': datetime.now() + timedelta(hours=time_zone),
+                'data': json.loads(result.text)['data']['stockRealtimes']
             }
 
-        print('Request stock_real_times_by_group fail' + (datetime.now() + timedelta(hours = time_zone)).strftime(time_format))
+        print('Request stock_real_times_by_group fail' +
+              (datetime.now() + timedelta(hours=time_zone)).strftime(time_format))
 
     except Exception as e:
         print(e)

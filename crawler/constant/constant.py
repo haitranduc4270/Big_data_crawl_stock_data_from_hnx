@@ -3,18 +3,26 @@ news_vndirect_api = 'news_vndirect_api'
 analys_news_vndirect_api = 'analys_news_vndirect_api'
 
 works = [
+    # {
+    #     'data': ssi_stock_data_api,
+    #     'config': 'config/ssi_stock_data.json'
+    # },
     {
         'data': ssi_stock_data_api,
-        'config': 'config/ssi_stock_data.json'
+        'config': 'config/ssi_stock_data_HOSE.json'
     },
     {
-        'data': news_vndirect_api,
-        'config': 'config/news_vndirect.json'
+        'data': ssi_stock_data_api,
+        'config': 'config/ssi_stock_data_HNX.json'
     },
-    {
-        'data': analys_news_vndirect_api,
-        'config': 'config/analys_news_vndirect.json'
-    },
+    # {
+    #     'data': news_vndirect_api,
+    #     'config': 'config/news_vndirect.json'
+    # },
+    # {
+    #     'data': analys_news_vndirect_api,
+    #     'config': 'config/analys_news_vndirect.json'
+    # },
 
 ]
 

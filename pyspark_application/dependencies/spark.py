@@ -1,13 +1,15 @@
 from pyspark.context import SparkContext
 from pyspark.sql.session import SparkSession
+from constant.constant import spark_master, app_name
 
-def start_spark ():
-  spark_context = (SparkSession
-    .builder
-    .master("spark://spark-master:7077")
-    .appName('pyspark_application')
-    .config("spark.executor.cores", 4)
-    .config("spark.cores.max", 4)
-    .getOrCreate())
 
-  return spark_context
+def start_spark():
+    spark = (SparkSession
+             .builder
+             .master(spark_master)
+             .appName(app_name)
+             .config("spark.executor.cores", 4)
+             .config("spark.cores.max", 4)
+             .getOrCreate())
+
+    return spark
