@@ -24,7 +24,7 @@ def start_crawler():
         for work in works:
             crawl(spark_sess, work)
 
-        time.sleep(60)
+        time.sleep(5)
 
 
 if __name__ == '__main__':

@@ -26,11 +26,11 @@ works = [
 
 ]
 
-hadoop_namenode = 'hdfs://namenode:9000/project20221/'
+hadoop_namenode = 'hdfs://namenode:9000/project20221-real/'
 spark_master = 'spark://spark-master:7077'
 app_name = 'crawler'
 kafka_bootstrap_servers = ['kafka:9092']
 kafka_topic = 'crawl_data'
 
 time_format = '%m-%d-%Y-%H-%M-%S'
-time_zone = 7
+time_zone = 0

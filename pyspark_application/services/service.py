@@ -1,7 +1,6 @@
 import json
-from constant.constant import hadoop_namenode
 from services.ssi_stock_data import process_ssi_stock_data
-from constant.constant import ssi_stock_data_api
+from constant.constant import ssi_stock_data_api, hadoop_namenode
 
 
 def process(spark, data_dir, config_dir, time_stamp):

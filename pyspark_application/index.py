@@ -1,9 +1,13 @@
+# from services import service
+# from dependencies import kafka_consumer
+# from dependencies import spark
+# from constant.constant import kafka_bootstrap_servers, kafka_topic
 from services import service
 from dependencies import kafka_consumer
 from dependencies import spark
 from constant.constant import kafka_bootstrap_servers, kafka_topic
-# import time
-# from datetime import datetime
+import time
+from datetime import datetime
 
 # print('Pyspark application stared')
 
