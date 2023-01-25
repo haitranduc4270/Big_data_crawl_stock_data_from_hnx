@@ -1,0 +1,29 @@
+{
+    "time_stamp": "2022-12-12T12:15:12",
+    "data": [
+        {
+            "name": "sathiy-ajith",
+            "rollno": 56,
+            "cgpa": 8.6,
+            "phonenumber": "9976770500"
+        },
+        {
+            "name": "sathiyajith1",
+            "rollno": 56,
+            "cgpa": 8.6,
+            "phonenumber": "9976770501"
+        },
+        {
+            "name": "sathiyajith2",
+            "rollno": 56,
+            "cgpa": 8.6,
+            "phonenumber": "9976770502"
+        },
+        {
+            "name": "sathiyajith3",
+            "rollno": 56,
+            "cgpa": 8.6,
+            "phonenumber": "9976770503"
+        }
+    ]
+}

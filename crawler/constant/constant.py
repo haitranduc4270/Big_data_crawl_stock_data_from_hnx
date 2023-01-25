@@ -34,3 +34,4 @@ kafka_topic = 'crawl_data'
 
 time_format = '%m-%d-%Y-%H-%M-%S'
 time_zone = 0
+elasticsearch_time_format = '%Y-%m-%dT%H:%M:%S'

@@ -1,8 +1,11 @@
-from constant.constant import kafka_bootstrap_servers, kafka_topic
-
-from dependencies import spark
-from dependencies import kafka_consumer
+from constant.constant import kafka_bootstrap_servers, kafka_topic, elasticsearch_time_format
+import os.path
+from os import path
+import json
+from dependencies import spark, kafka_consumer
 from services import service
+from services.company import get_company_info
+from datetime import datetime, timedelta
 
 
 def start_app():
@@ -12,8 +15,19 @@ def start_app():
                                .start_kafka_consumer(kafka_bootstrap_servers, kafka_topic))
 
     while 1:
-        for msg in kafka_consumer_instance:
-            service.start(msg, spark_sess)
+        if not path.exists('data/stock.json'):
+            get_company_info()
+        else:
+            with open('data/stock.json', 'r') as openfile:
+                stock_info = json.load(openfile)
+            if datetime.now() + timedelta(hours=7) > datetime.strptime(
+                    stock_info['time_stamp'], elasticsearch_time_format):
+                get_company_info()
+
+            else:
+                print('Listen to kafka')
+                for msg in kafka_consumer_instance:
+                    service.start(msg, stock_info['data'], spark_sess)
 
 
 if __name__ == '__main__':

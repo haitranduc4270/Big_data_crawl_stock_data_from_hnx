@@ -12,4 +12,4 @@ time_format = '%m-%d-%Y-%H-%M-%S'
 date_format = '%m-%d-%Y'
 elasticsearch_time_format = '%Y-%m-%dT%H:%M:%S'
 time_zone = 0
-elasticsearch_index = 'stock_data_realtime_per_seconds'
+elasticsearch_index = 'stock_data_realtime_test'
