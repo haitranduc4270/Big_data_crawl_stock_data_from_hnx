@@ -1,3 +1,4 @@
+
 from datetime import datetime, timedelta
 from services.company import get_company_info
 from services import service
@@ -7,7 +8,7 @@ from os import path
 from constant.constant import kafka_bootstrap_servers, kafka_topic, elasticsearch_time_format
 from datetime import datetime
 
-# print('Pyspark application stared')
+print('Pyspark application stared')
 
 # while True:
 #     print(datetime.now())
