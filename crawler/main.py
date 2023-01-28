@@ -3,6 +3,7 @@ import time
 from dependencies import spark
 from services.crawl.crawl import start_crawl
 from constant.constant import works, hadoop_namenode
+import config.config
 
 
 def crawl(spark_sess, work):

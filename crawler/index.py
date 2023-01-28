@@ -3,6 +3,7 @@ from services.crawl.crawl import start_crawl
 from dependencies import spark
 import time
 from datetime import datetime
+import config.config
 
 print('Craler stared')
 
