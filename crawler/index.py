@@ -1,15 +1,11 @@
 from constant.constant import works, hadoop_namenode
-from services.crawl.crawl import start_crawl
+from services.crawl import start_crawl
 from dependencies import spark
 import time
 from datetime import datetime
 import config.config
 
 print('Craler stared')
-
-# while True:
-#     print(datetime.now())
-#     time.sleep(60)
 
 
 def crawl(spark_sess, work):
@@ -31,7 +27,7 @@ def start_crawler():
         for work in works:
             crawl(spark_sess, work)
 
-        time.sleep(6)
+        time.sleep(10)
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 import json
-from services.apis.apis import get_stock_real_times_by_group, get_analys_news_vndirect
-from constant.constant import ssi_stock_data_api, news_vndirect_api, analys_news_vndirect_api, hadoop_namenode, time_format, kafka_bootstrap_servers, kafka_topic
+from services.apis import get_stock_real_times_by_group, get_analys_news_vndirect
+from constant.constant import ssi_stock_data_api, analys_news_vndirect_api, hadoop_namenode, time_format, kafka_bootstrap_servers, kafka_topic
 from dependencies import kafka_producer
 
 

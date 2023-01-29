@@ -6,21 +6,13 @@
     },
     "frequency":{
        "period":{
-          "value":"giá trị thời gian lặp lại ví dụ 1, 2 3",
-          "unit":"đơn vị của chu kỳ ví dụ là hour thì sẽ lặp theo giờ, phút, ..."
+          "value":"",
+          "unit":""
        },
-       "from":"8: cái này là kiểu 8 h sáng đến 18 h tối kiểu thế",
-       "to":"18: cái này là kiểu 8 h sáng đến 18 h tối kiểu thế"
+       "from":"",
+       "to":""
     },
     "hadoop_dir": "raw/vndirect_analys_news/",
     "config_dir": "config/analys_news_vndirect.json",
-    "Schema": [
-        {
-            "fieldName":"typename - tên trường mới ",
-            "type":"string kiểu dữ liệu trong spark để đọc nó sẽ là kiểu stringType, ...",
-            "nullable": "1 0 kiểu boolean í",
-            "from":"cái này sẽ là tên trường ban đầu chẳng hạn",
-            "action":"trường này thể hiện m sẽ làm gì với trường ban đầu để nó ra được trường m cần tìm ví dụ như nhận 100, chia 100 ..."
-        }
-    ]
+    "Schema": []
 }

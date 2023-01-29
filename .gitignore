@@ -4,3 +4,6 @@
 /backup_data
 /src
 /notebook
+/crawler/main.py
+/pyspark_application/main.py
+/pyspark_application/restore_from_backup.py

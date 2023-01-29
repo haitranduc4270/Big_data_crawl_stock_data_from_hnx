@@ -10,10 +10,6 @@ from datetime import datetime
 
 print('Pyspark application stared')
 
-# while True:
-#     print(datetime.now())
-#     time.sleep(60)
-
 
 def start_app():
     spark_sess = spark.start_spark()

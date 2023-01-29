@@ -123,8 +123,8 @@ services:
       - datanode
       - spark-master
       - spark-worker
-      # - elasticsearch
-      # - kibana
+      - elasticsearch
+      - kibana
       - zookeeper
       - kafka
     volumes:
@@ -139,8 +139,8 @@ services:
       - datanode
       - spark-master
       - spark-worker
-      # - elasticsearch
-      # - kibana
+      - elasticsearch
+      - kibana
       - zookeeper
       - kafka
     volumes:

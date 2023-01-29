@@ -1,3 +1,4 @@
+# Ghi các file config vào hadoop
 from pyspark.context import SparkContext
 from pyspark.sql.session import SparkSession
 from constant.constant import works, hadoop_namenode
