@@ -13,16 +13,16 @@ def process_ssi_data(spark, data, work):
     df = spark.read.json(df)
 
     data_dir = hadoop_namenode + work['hadoop_dir'] + \
-        data['timestamp'].strftime(time_format) + '.json'
+        data['timestamp'].strftime(time_format) + '.parquet'
 
     (df
         .write
-        .format('json')
+        .format('parquet')
         .mode('overwrite')
         .save(data_dir))
 
     kafka_producer_instance.send(kafka_topic, {
-        'data_dir': work['hadoop_dir'] + data['timestamp'].strftime(time_format) + '.json',
+        'data_dir': work['hadoop_dir'] + data['timestamp'].strftime(time_format) + '.parquet',
         'config_dir': work['config_dir'],
         'time_stamp': data['timestamp'].strftime(time_format)
     })

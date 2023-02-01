@@ -202,11 +202,11 @@ def process_ssi_stock_data(spark, data, config, time_stamp, stock_info):
         data_dir = (hadoop_namenode + config['hadoop_clean_dir'] +
                     config['source']['body']['variables']['exchange'] + '/' +
                     time_stamp.strftime(date_format) + '/' +
-                    time_stamp.strftime(time_format) + '.json')
+                    time_stamp.strftime(time_format) + '.parquet')
 
         (data
             .write
-            .format('json')
+            .format('parquet')
             .mode('overwrite')
             .save(data_dir))
 

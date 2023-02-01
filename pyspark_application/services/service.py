@@ -4,7 +4,10 @@ from constant.constant import ssi_stock_data_api, hadoop_namenode
 
 
 def process(spark, data_dir, config_dir, time_stamp, stock_info):
-    data = spark.read.json(hadoop_namenode + data_dir)
+    data = (spark
+            .read
+            .format('parquet')
+            .load(hadoop_namenode + data_dir))
 
     config = (spark
               .read
