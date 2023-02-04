@@ -146,6 +146,22 @@ services:
     volumes:
       - ../big_data_20221/crawler/:/app
 
+  node_crawler:
+    image: myracoon/node-app
+    container_name: node_crawler
+    restart: always
+    depends_on:
+      - namenode
+      - datanode
+      - spark-master
+      - spark-worker
+      - elasticsearch
+      - kibana
+      - zookeeper
+      - kafka
+    volumes:
+      - ../big_data_20221/nodejs_crawler/:/app
+
 volumes:
   hadoop_namenode:
   hadoop_datanode:
