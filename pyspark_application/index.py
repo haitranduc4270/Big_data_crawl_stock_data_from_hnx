@@ -1,14 +1,12 @@
-
-from datetime import datetime, timedelta
-from services.company import get_company_info
-from services import service
-from dependencies import spark, kafka_consumer
-import json
-from os import path
 from constant.constant import kafka_bootstrap_servers, kafka_topic, elasticsearch_time_format
-from datetime import datetime
-
-print('Pyspark application stared')
+import os.path
+from os import path
+import json
+from dependencies import spark, kafka_consumer
+from services import service
+from services.company import get_company_info
+from datetime import datetime, timedelta
+from dependencies.mongo import save_df_to_mongodb
 
 
 def start_app():
@@ -30,7 +28,8 @@ def start_app():
             else:
                 print('Listen to kafka')
                 for msg in kafka_consumer_instance:
-                    service.start(msg, stock_info['data'], spark_sess)
+                    service.start(
+                        msg, stock_info['data'], spark_sess, save_df_to_mongodb)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 hdfs
 kafka-python
 requests
-schedule
 pyspark==3.3.0
+pymongo==4.3.3

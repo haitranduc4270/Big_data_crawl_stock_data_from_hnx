@@ -147,7 +147,7 @@ services:
       - ../big_data_20221/crawler/:/app
 
   node_crawler:
-    image: myracoon/node-app
+    image: myracoon/node_app
     container_name: node_crawler
     restart: always
     depends_on:
