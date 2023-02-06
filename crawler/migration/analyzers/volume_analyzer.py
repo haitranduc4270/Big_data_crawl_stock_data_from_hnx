@@ -8,7 +8,7 @@ class VolumeAnalyzer(Analyzer):
     def analyze(self, share):
         if share.history_size < self.threshold + 1:
             return None
-
+            
         last_month_volume = share.daily_history[-self.threshold - 1: -1]['volume'].mean()
         last_day_volume = share.last_day_history['volume']
 

@@ -17,7 +17,7 @@ class OptionAnalyzer(Analyzer):
         if not active_options.exists():
             return
 
-        for letter in ['ض', 'ط']:
+        for letter in ['a', 'b']:
             similar_options = active_options.filter(ticker__startswith=letter)
             for d in set(similar_options.values_list('strike_date', flat=True)):
                 options = list(similar_options.filter(strike_date=d).order_by('option_strike_price'))
