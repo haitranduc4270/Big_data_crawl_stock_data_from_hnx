@@ -44,7 +44,8 @@ const main = async () => {
         value: JSON.stringify(articles)
       }],
     })
-
+    console.log('Success')
+    console.log(Date.now())
     await delay(1000 * 60 * 10)
   }
 

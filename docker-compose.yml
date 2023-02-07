@@ -162,6 +162,17 @@ services:
     volumes:
       - ../big_data_20221/articles_crawler/:/app
 
+  articles_server:
+    image: myracoon/node_app
+    container_name: articles_server
+    restart: always
+    expose:
+      - "3000"
+    ports:
+      - 3000:3000
+    volumes:
+      - ../big_data_20221/articles_server/:/app
+
 volumes:
   hadoop_namenode:
   hadoop_datanode:

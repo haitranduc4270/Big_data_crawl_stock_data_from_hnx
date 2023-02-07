@@ -7,3 +7,4 @@
 /pyspark_application/main.py
 /pyspark_application/restore_from_backup.py
 /articles_crawler/node_modules
+/articles_server/node_modules
