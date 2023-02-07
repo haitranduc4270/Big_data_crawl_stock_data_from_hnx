@@ -37,7 +37,7 @@ def crawl(spark_sess, work):
               .rdd
               .map(lambda row: row.asDict()).collect())
 
-    if (len(config) != 0):
+    if (len(config) == 1):
         start_crawl(spark_sess, config[0])
 
 
@@ -49,7 +49,7 @@ def start_crawler():
             for work in works:
                 crawl(spark_sess, work)
 
-            time.sleep(10)
+            time.sleep(60)
         else:
             print('Not exchange time yet')
 

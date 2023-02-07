@@ -124,7 +124,8 @@ def extract_article_data(spark, new_article, stock_info, save_df_to_mongodb):
 
     new_article = (new_article
                    .select(col('id'), col('tag'), col('description'), col('link'), col('source'), col('title'), col('pubDate'))
-                   .withColumn('tag', explode(split('tag', ' '))))
+                   .withColumn('tag', explode(split('tag', ' ')))
+                   .filter(col('tag') != ''))
 
     # Save tag to elasticsearch
     save_dataframes_to_elasticsearch(new_article, 'article', {
