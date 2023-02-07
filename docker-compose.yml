@@ -130,9 +130,9 @@ services:
     volumes:
       - ../big_data_20221/pyspark_application/:/app
 
-  crawler:
+  stock_iboard_crawler:
     image: myracoon/racoon_pyspark:latest
-    container_name: crawler
+    container_name: stock_iboard_crawler
     restart: always
     depends_on:
       - namenode
@@ -144,11 +144,11 @@ services:
       - zookeeper
       - kafka
     volumes:
-      - ../big_data_20221/crawler/:/app
+      - ../big_data_20221/stock_iboard_crawler/:/app
 
-  node_crawler:
+  articles_crawler:
     image: myracoon/node_app
-    container_name: node_crawler
+    container_name: articles_crawler
     restart: always
     depends_on:
       - namenode
@@ -160,7 +160,7 @@ services:
       - zookeeper
       - kafka
     volumes:
-      - ../big_data_20221/nodejs_crawler/:/app
+      - ../big_data_20221/articles_crawler/:/app
 
 volumes:
   hadoop_namenode:
