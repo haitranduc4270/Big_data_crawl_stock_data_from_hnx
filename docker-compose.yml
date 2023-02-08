@@ -115,7 +115,7 @@ services:
       - zookeeper
 
   pyspark_application:
-    image: myracoon/racoon_pyspark:latest
+    image: myracoon/racoon_pyspark:mongo
     container_name: pyspark_application
     restart: always
     depends_on:
@@ -131,7 +131,7 @@ services:
       - ../big_data_20221/pyspark_application/:/app
 
   stock_iboard_crawler:
-    image: myracoon/racoon_pyspark:latest
+    image: myracoon/racoon_pyspark:mongo
     container_name: stock_iboard_crawler
     restart: always
     depends_on:
@@ -147,7 +147,7 @@ services:
       - ../big_data_20221/stock_iboard_crawler/:/app
 
   articles_crawler:
-    image: myracoon/node_app
+    image: myracoon/racoon_node:latest
     container_name: articles_crawler
     restart: always
     depends_on:
@@ -163,7 +163,7 @@ services:
       - ../big_data_20221/articles_crawler/:/app
 
   articles_server:
-    image: myracoon/node_app
+    image: myracoon/racoon_node:latest
     container_name: articles_server
     restart: always
     expose:

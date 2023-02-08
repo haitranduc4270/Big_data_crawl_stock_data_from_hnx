@@ -7,6 +7,8 @@ from dependencies.elasticsearch import save_dataframes_to_elasticsearch
 
 
 def pre_process_ssi_stock_data(data):
+
+    # Hàm tạo thêm cột nếu cột không tồn tại, cast dữ liệu trong cột về đúng dataType mặc định
     def fill_data(column, df, data_type):
         if not column in df.columns:
             ret = lit(None).cast(data_type)
@@ -15,6 +17,7 @@ def pre_process_ssi_stock_data(data):
 
         return ret
 
+    # Fill data bằng giá trị mặc định, tạo cột nếu cột không tồn tại
     data = (data
             .withColumn('stockSymbol', fill_data('stockSymbol', data, StringType()))
             .withColumn('exchange', fill_data('exchange', data, StringType()))
@@ -89,6 +92,7 @@ def process_ssi_stock_data(spark, data, config, time_stamp, stock_info):
         print(datetime.now())
         time_stamp = datetime.strptime(time_stamp, '%m-%d-%Y-%H-%M-%S')
 
+        # Sử dụng spark map để đổi lại tên và thêm thông tin tương ứng của từng công ty theo mã cổ phiếu
         def reformat(row):
             index = row.stockSymbol + '-' + row.exchange
             return ([
@@ -175,6 +179,7 @@ def process_ssi_stock_data(spark, data, config, time_stamp, stock_info):
             'stockType',
         ])
 
+        # Cast lại các giá trị thông tin công ty string về double
         data = (data
                 .withColumn('chartercapital', col('chartercapital').cast(DoubleType()))
                 .withColumn('numberofemployee', col('numberofemployee').cast(LongType()))
@@ -184,6 +189,7 @@ def process_ssi_stock_data(spark, data, config, time_stamp, stock_info):
                 .withColumn('marketcap', col('marketcap').cast(DoubleType()))
                 .withColumn('time_stamp', lit(time_stamp.strftime(elasticsearch_time_format))))
 
+        # Fill các giá trị mới thêm bằng giá trị mặc định
         data = (data
                 .na.fill(value='undefined', subset=([
                     'subsectorcode',
@@ -199,6 +205,7 @@ def process_ssi_stock_data(spark, data, config, time_stamp, stock_info):
                     'marketcap']))
                 .na.fill(value=0, subset=['numberofemployee']))
 
+        # Ghi dữ liệu sau xử lý vào hadoop
         data_dir = (hadoop_namenode + config['hadoop_clean_dir'] +
                     config['source']['body']['variables']['exchange'] + '/' +
                     time_stamp.strftime(date_format) + '/' +
@@ -210,6 +217,7 @@ def process_ssi_stock_data(spark, data, config, time_stamp, stock_info):
             .mode('overwrite')
             .save(data_dir))
 
+        # Ghi dữ liệu ra elasticsearch
         save_dataframes_to_elasticsearch(data, elasticsearch_index, {
             'es.nodes': 'elasticsearch',
             'es.port': '9200',

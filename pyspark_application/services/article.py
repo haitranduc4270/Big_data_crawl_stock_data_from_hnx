@@ -9,6 +9,7 @@ from constant.constant import hadoop_namenode
 def pre_process_article_data(spark, data):
     print('Start article')
 
+    # Đọc dữ liệu các bài báo đã có từ hadoop
     schema = StructType([
         StructField("content", StringType(), True),
         StructField("description", StringType(), True),
@@ -36,6 +37,7 @@ def pre_process_article_data(spark, data):
 
     print('Read data success')
 
+    # Sử dụng spark map để tính time stamp và định danh duy nhất của từng bài báo
     def get_article_id(row):
         return ([
             row.content,
@@ -58,7 +60,7 @@ def pre_process_article_data(spark, data):
         'id',
     ])
 
-    # find unduplicate article
+    # Tìm các bài báo chưa được ghi trong hadoop tức là các bài báo mới để tránh trùng lắp
     if articles != 0:
 
         new_article = new_article.join(articles.withColumn('new', lit(False)).select(col('id'), col('new')), on="id", how='left')\
@@ -70,6 +72,7 @@ def pre_process_article_data(spark, data):
     new_article = new_article.select(col('id'), col('content'), col(
         'description'), col('link'), col('source'), col('title'), col('pubDate'))
 
+    # Ghi lại các bài báo ra hadoop
     (new_article
         .write
         .format('parquet')
@@ -82,17 +85,22 @@ def pre_process_article_data(spark, data):
 
 
 def extract_article_data(spark, new_article, stock_info, save_df_to_mongodb):
+    # Lấy tất cả các mã cô phiếu từ stock_info ghi vào mảng để xử dụng
     stock_codes = []
     for stock in stock_info.values():
         stock_codes.append(stock['companyProfile']['symbol'])
 
     stock_codes = list(filter(lambda score: score != None, stock_codes))
 
+    # Sử dụng spark map để lặp qua các bài báo và xác định số lần mà một mã cổ phiếu được nhắc đến trong nội dung
     def get_tag(row):
         result = []
+        # Chỉ lấy ra chữ, số, dấu cách từ nội dung
         string = re.sub(r'[^\w\s]', '', row.content)
+        # Tách thành từng từ
         string = string.split(' ')
 
+        # Kiểm tra từ khớp với mã cổ phiếu
         for word in string:
             if word in stock_codes:
                 result.append(word)
@@ -119,15 +127,16 @@ def extract_article_data(spark, new_article, stock_info, save_df_to_mongodb):
         'id',
     ])
 
-    # Save to db article
+    # Ghi dữ liệu từng bài báo cùng tag vào mongodb
     save_df_to_mongodb('articles', new_article)
 
+    # Tách theo từng lần một mã cổ phiếu xuất hiện
     new_article = (new_article
                    .select(col('id'), col('tag'), col('description'), col('link'), col('source'), col('title'), col('pubDate'))
                    .withColumn('tag', explode(split('tag', ' ')))
                    .filter(col('tag') != ''))
 
-    # Save tag to elasticsearch
+    # Lưu thông tin vào elasticseach
     save_dataframes_to_elasticsearch(new_article, 'article', {
         'es.nodes': 'elasticsearch',
         'es.port': '9200',

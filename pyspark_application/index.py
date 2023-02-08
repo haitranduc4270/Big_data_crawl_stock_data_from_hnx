@@ -16,6 +16,7 @@ def start_app():
                                .start_kafka_consumer(kafka_bootstrap_servers, kafka_topic))
 
     while 1:
+        # Nếu chưa có file chứa thông tin các công ty trên sàn của ngày hôm đó thì lấy và ghi vào data/stock.json
         if not path.exists('data/stock.json'):
             get_company_info()
         else:

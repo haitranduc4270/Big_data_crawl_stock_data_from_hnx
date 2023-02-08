@@ -9,6 +9,8 @@ print('Craler stared')
 
 elasticsearch_time_format = '%Y-%m-%dT%H:%M:%S'
 
+# Hàm trả về 1 nếu thời gian hiện tại trong giờ giao dịch, 0 ngược lại
+
 
 def is_in_exchange_time():
     now = datetime.now() + timedelta(hours=7)
@@ -30,6 +32,7 @@ def is_in_exchange_time():
 
 
 def crawl(spark_sess, work):
+    # Đọc file config được chỉ định để xử lý
     config = (spark_sess
               .read
               .option("multiLine", "true")
