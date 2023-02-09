@@ -1,0 +1,17 @@
+{
+   "data": "news_vndirect_api",
+   "source": {
+      "url":"https://finfo-api.vndirect.com.vn/v4/news?q=newsGroup:company_news~locale:VN&sort=newsDate:desc~newsTime:desc&size=20",
+      "method":"GET"
+   },
+   "frequency":{
+      "period":{
+         "value":"",
+         "unit":""
+      },
+      "from":"",
+      "to":""
+   },
+   "hadoop_dir": "raw/news_vndirect/",
+   "config_dir": "config/news_vndirect.json"
+ }

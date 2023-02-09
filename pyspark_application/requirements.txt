@@ -1,0 +1,5 @@
+hdfs
+kafka-python
+requests
+pyspark==3.3.0
+pymongo==4.3.3

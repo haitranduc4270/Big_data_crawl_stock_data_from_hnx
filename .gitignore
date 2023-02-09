@@ -1,3 +1,10 @@
 /data
 /crawler/node_modules
-/Daily Historical Stock Prices (1970 - 2018)
+/backup_data
+/src
+/notebook
+/stock_iboard_crawler/main.py
+/pyspark_application/main.py
+/pyspark_application/restore_from_backup.py
+/articles_crawler/node_modules
+/articles_server/node_modules
