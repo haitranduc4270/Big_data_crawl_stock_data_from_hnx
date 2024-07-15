@@ -17,4 +17,4 @@ Sử dụng:
 - Vào http://localhost:5601/app/dev_tools#/console và chạy GET /stock_data_realtime/\_search để xem các bản ghi được lưu về
 - Sử dụng backup của dashboard kibana để biểu diễn dữ liệu: kibana_backup.ndjson
 
-Slide: https://drive.google.com/file/d/1cJLs-6MBr9UyUmBYEanNyRfWqiy32JY4/view?usp=sharing
+Slide: [https://drive.google.com/file/d/1cJLs-6MBr9UyUmBYEanNyRfWqiy32JY4/view?usp=sharing](https://docs.google.com/presentation/d/1OrKBqExjENKkWiz75Y2RwJlrioCMoi6v/edit?usp=drive_link&ouid=111702446006875535535&rtpof=true&sd=true)
