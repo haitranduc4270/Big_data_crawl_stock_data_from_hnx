@@ -34,7 +34,7 @@ services:
   #   ports:
   #     - "8888:8888"
   #   volumes:
-  #     - ../big_data_20221/:/home/jovyan/work/
+  #     - ../Big_data_crawl_stock_data_from_hnx/:/home/jovyan/work/
 
   spark-master:
     image: bde2020/spark-master:3.3.0-hadoop3.3
@@ -128,7 +128,7 @@ services:
       - zookeeper
       - kafka
     volumes:
-      - ../big_data_20221/pyspark_application/:/app
+      - ../Big_data_crawl_stock_data_from_hnx/pyspark_application/:/app
 
   stock_iboard_crawler:
     image: myracoon/racoon_pyspark:mongo
@@ -144,7 +144,7 @@ services:
       - zookeeper
       - kafka
     volumes:
-      - ../big_data_20221/stock_iboard_crawler/:/app
+      - ../Big_data_crawl_stock_data_from_hnx/stock_iboard_crawler/:/app
 
   articles_crawler:
     image: myracoon/racoon_node:latest
@@ -160,7 +160,7 @@ services:
       - zookeeper
       - kafka
     volumes:
-      - ../big_data_20221/articles_crawler/:/app
+      - ../Big_data_crawl_stock_data_from_hnx/articles_crawler/:/app
 
   articles_server:
     image: myracoon/racoon_node:latest
@@ -171,7 +171,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ../big_data_20221/articles_server/:/app
+      - ../Big_data_crawl_stock_data_from_hnx/articles_server/:/app
 
 volumes:
   hadoop_namenode:

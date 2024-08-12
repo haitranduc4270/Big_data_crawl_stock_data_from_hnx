@@ -19,34 +19,34 @@ def pre_process_ssi_stock_data(data):
 
     # Fill data bằng giá trị mặc định, tạo cột nếu cột không tồn tại
     data = (data
-            .withColumn('stockSymbol', fill_data('stockSymbol', data, StringType()))
-            .withColumn('exchange', fill_data('exchange', data, StringType()))
-            .withColumn('priceChange', fill_data('priceChange', data, DoubleType()))
-            .withColumn('priceChangePercent', fill_data('priceChangePercent', data, DoubleType()))
-            .withColumn('nmTotalTradedQty', fill_data('nmTotalTradedQty', data, LongType()))
-            .withColumn('best1Bid', fill_data('best1Bid', data, DoubleType()))
-            .withColumn('best2Bid', fill_data('best2Bid', data, DoubleType()))
-            .withColumn('best3Bid', fill_data('best3Bid', data, DoubleType()))
-            .withColumn('best1Offer', fill_data('best1Offer', data, DoubleType()))
-            .withColumn('best2Offer', fill_data('best2Offer', data, DoubleType()))
-            .withColumn('best3Offer', fill_data('best3Offer', data, DoubleType()))
-            .withColumn('lowest', fill_data('lowest', data, DoubleType()))
-            .withColumn('highest', fill_data('highest', data, DoubleType()))
-            .withColumn('refPrice', fill_data('refPrice', data, DoubleType()))
-            .withColumn('floor', fill_data('floor', data, DoubleType()))
-            .withColumn('ceiling', fill_data('ceiling', data, DoubleType()))
-            .withColumn('matchedPrice', fill_data('matchedPrice', data, DoubleType()))
-            .withColumn('best1BidVol', fill_data('best1BidVol', data, LongType()))
-            .withColumn('best2BidVol', fill_data('best2BidVol', data, LongType()))
-            .withColumn('best3BidVol', fill_data('best3BidVol', data, LongType()))
-            .withColumn('best1OfferVol', fill_data('best1OfferVol', data, LongType()))
-            .withColumn('best2OfferVol', fill_data('best2OfferVol', data, LongType()))
-            .withColumn('best3OfferVol', fill_data('best3OfferVol', data, LongType()))
-            .withColumn('matchedVolume', fill_data('matchedVolume', data, LongType()))
-            .withColumn('currentBidQty', fill_data('currentBidQty', data, DoubleType()))
-            .withColumn('currentOfferQty', fill_data('currentOfferQty', data, DoubleType()))
-            .withColumn('session', fill_data('session', data, StringType()))
-            .withColumn('stockType', fill_data('stockType', data, StringType()))
+            .withColumn('stockSymbol', fill_data('ss', data, StringType()))
+            .withColumn('exchange', fill_data('e', data, StringType()))
+            .withColumn('priceChange', fill_data('pc', data, DoubleType()))
+            .withColumn('priceChangePercent', fill_data('cp', data, DoubleType()))
+            .withColumn('nmTotalTradedQty', fill_data('mtq', data, LongType()))
+            .withColumn('best1Bid', fill_data('b1', data, DoubleType()))
+            .withColumn('best2Bid', fill_data('b2', data, DoubleType()))
+            .withColumn('best3Bid', fill_data('b3', data, DoubleType()))
+            .withColumn('best1Offer', fill_data('o1', data, DoubleType()))
+            .withColumn('best2Offer', fill_data('o2', data, DoubleType()))
+            .withColumn('best3Offer', fill_data('o3', data, DoubleType()))
+            .withColumn('lowest', fill_data('l', data, DoubleType()))
+            .withColumn('highest', fill_data('h', data, DoubleType()))
+            .withColumn('refPrice', fill_data('r', data, DoubleType()))
+            .withColumn('floor', fill_data('f', data, DoubleType()))
+            .withColumn('ceiling', fill_data('c', data, DoubleType()))
+            .withColumn('matchedPrice', fill_data('mp', data, DoubleType()))
+            .withColumn('best1BidVol', fill_data('b1v', data, LongType()))
+            .withColumn('best2BidVol', fill_data('b2v', data, LongType()))
+            .withColumn('best3BidVol', fill_data('b3v', data, LongType()))
+            .withColumn('best1OfferVol', fill_data('o1v', data, LongType()))
+            .withColumn('best2OfferVol', fill_data('o2v', data, LongType()))
+            .withColumn('best3OfferVol', fill_data('o3v', data, LongType()))
+            .withColumn('matchedVolume', fill_data('mv', data, LongType()))
+            .withColumn('currentBidQty', fill_data('b1', data, DoubleType()))
+            .withColumn('currentOfferQty', fill_data('o1', data, DoubleType()))
+            .withColumn('session', fill_data('s', data, StringType()))
+            .withColumn('stockType', fill_data('st', data, StringType()))
             )
 
     data = (data
@@ -120,17 +120,21 @@ def process_ssi_stock_data(spark, data, config, time_stamp, stock_info):
                 row.best2OfferVol,
                 row.best3OfferVol,
                 row.matchedVolume,
-                stock_info[index]['companyProfile']["subsectorcode"] if index in stock_info else None,
-                stock_info[index]['companyProfile']["industryname"] if index in stock_info else None,
-                stock_info[index]['companyProfile']["supersector"] if index in stock_info else None,
-                stock_info[index]['companyProfile']["sector"] if index in stock_info else None,
-                stock_info[index]['companyProfile']["subsector"] if index in stock_info else None,
-                stock_info[index]['companyProfile']["chartercapital"] if index in stock_info else None,
-                stock_info[index]['companyProfile']["numberofemployee"] if index in stock_info else None,
-                stock_info[index]['companyProfile']["issueshare"] if index in stock_info else None,
-                stock_info[index]['companyProfile']["firstprice"] if index in stock_info else None,
-                stock_info[index]['companyStatistics']["sharesoutstanding"] if index in stock_info else None,
-                stock_info[index]['companyStatistics']["marketcap"] if index in stock_info else None,
+                
+                stock_info[index]['companyProfile']["subSectorCode"] if index in stock_info else "",
+                stock_info[index]['companyProfile']["industryName"] if index in stock_info else "",
+                stock_info[index]['companyProfile']["superSector"] if index in stock_info else "",
+                stock_info[index]['companyProfile']["sector"] if index in stock_info else "",
+                stock_info[index]['companyProfile']["subSector"] if index in stock_info else "",
+                stock_info[index]['companyProfile']["charterCapital"] if index in stock_info else 0,
+                stock_info[index]['companyProfile']["numberOfEmployee"] if index in stock_info else 0,
+                stock_info[index]['companyProfile']["issueShare"] if index in stock_info else 0,
+                stock_info[index]['companyProfile']["firstPrice"] if index in stock_info else 0,
+                # stock_info[index]['companyStatistics']["sharesoutstanding"] if index in stock_info else 0,
+                # stock_info[index]['companyStatistics']["marketcap"] if index in stock_info else 0,
+                stock_info[index]['companyStatistics']["firstPrice"] if index in stock_info else 0,
+                stock_info[index]['companyStatistics']["firstPrice"] if index in stock_info else 0,
+                
                 row.currentBidQty,
                 row.currentOfferQty,
                 row.session,

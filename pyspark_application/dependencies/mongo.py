@@ -1,7 +1,7 @@
 import pymongo
 
 mongo_client = pymongo.MongoClient(
-    'mongodb+srv://hai4270:hai4270@cluster-big-data.m420aoy.mongodb.net/?retryWrites=true&w=majority')
+    'mongodb+srv://hai4270:hai4270@dev.uov9yto.mongodb.net/?retryWrites=true&w=majority')
 
 db = mongo_client['big-data']
 print('Connect to db success')
